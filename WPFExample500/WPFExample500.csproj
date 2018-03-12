@@ -105,5 +105,8 @@
     <Resource Include="Resources\Image.jpg" />
     <Resource Include="Resources\index.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\SQLDatabaseDanishLover.sql" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
