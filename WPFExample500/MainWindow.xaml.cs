@@ -3,19 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using WPFExample500.Models;
+
 using WPFExample500.ViewModels;
 
 namespace WPFExample500
@@ -25,6 +14,8 @@ namespace WPFExample500
     /// </summary>
     public partial class MainWindow : Window
     {
+        public ViewModel viewModel;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -34,6 +25,10 @@ namespace WPFExample500
             List<object> Haircolor = SQLDatabase.GetSQLList("select PK_Haircolor from HaircolorTable");
             CBHaircolor.ItemsSource = Haircolor;
 
+            viewModel = new ViewModel();
+            GridUser.DataContext = viewModel;
+
+            //viewModel.UserModel.FK_Username;
 
         }
 
@@ -42,9 +37,8 @@ namespace WPFExample500
             //UserModel.Username = Username.Text;
 
             //MessageBox.Show(UserModel.Username);
-
-            ViewModel viewModel = new ViewModel();
-            viewModel.UpdateSQL();
+            //MessageBox.Show(UserModel.FK_Username);
+            viewModel.UpdateSQL(txtUsername.Text, txtPassword.Text, txtProfilename.Text);
         }
 
 
@@ -59,6 +53,7 @@ namespace WPFExample500
               "Portable Network Graphic (*.png)|*.png";
             if (op.ShowDialog() == true)
             {
+                //string f = UserModel.FK_Username;
                 string Imagepath = $@"C:\Images\1234.jpg";
                 //string filename = { Binding = "" };
                 File.Copy(op.FileName, Imagepath);

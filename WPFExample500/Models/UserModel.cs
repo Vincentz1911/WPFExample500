@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace WPFExample500.Models
+﻿namespace WPFExample500.Models
 {
-    public class UserModel : INotifyPropertyChanged
+    public class UserModel : PropChanged
 
     {
         private string _username;
@@ -93,21 +86,6 @@ namespace WPFExample500.Models
         private string _haircolor;
 
         public string Haircolor { get { return _haircolor; } set { _haircolor = value; NotifyPropertyChanged("Haircolor"); } }
-
-
-
-
-
-
-
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        public void NotifyPropertyChanged(string propName)
-        {
-            if (this.PropertyChanged != null)
-                this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
-        }
 
 
 

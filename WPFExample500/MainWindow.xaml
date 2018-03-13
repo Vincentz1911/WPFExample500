@@ -4,17 +4,18 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFExample500"
-        xmlns:ViewModels="clr-namespace:WPFExample500.ViewModels" x:Class="WPFExample500.MainWindow"
+        xmlns:ViewModels="clr-namespace:WPFExample500.ViewModels" xmlns:Models="clr-namespace:WPFExample500.Models" x:Class="WPFExample500.MainWindow"
         mc:Ignorable="d"
         Title="MainWindow" Height="800" Width="500">
 
-    <Grid>
+    <Grid x:Name="GridUser">
         <Border Margin="50">
 
             <StackPanel >
-                <StackPanel.DataContext>
+                <!--<StackPanel.DataContext>
+
                     <ViewModels:ViewModel/>
-                </StackPanel.DataContext>
+                </StackPanel.DataContext>-->
 
 
                 <!--<ListView Margin="10" Name="LW1" ItemsSource="{Binding UserModel.Picture}" Height="430"></ListView>-->
@@ -40,25 +41,28 @@
                     <Label Content="Username: "/>
                     <Label Content="{Binding UserModel.FK_Username}" />
                 </WrapPanel>
-                <TextBox Name="Username" Text="{Binding UserModel.FK_Username, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                <TextBox x:Name="txtUsername" Text="{Binding UserModel.FK_Username, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
                 <WrapPanel>
                     <Label Content="Password:"/>
                     <Label Content="{Binding UserModel.Password}" />
                 </WrapPanel>
-                <TextBox Text="{Binding UserModel.Password, Mode=TwoWay}" />
+                <TextBox x:Name="txtPassword" Text="{Binding UserModel.Password, Mode=TwoWay}" />
 
                 <Label Content="Profilename:"/>
-                <TextBox Text="{Binding UserModel.Profilename, Mode=TwoWay}" />
+                <TextBox x:Name="txtProfilename" Text="{Binding UserModel.Profilename, Mode=TwoWay}" />
 
+                
+                
+                
                 <Label Content="Email:"/>
                 <TextBox Text="{Binding UserModel.Email, Mode=TwoWay}" />
 
                 <Label Content="Gender:"/>
-                <ComboBox Name="CBGender" SelectedItem="{Binding UserModel.Gender, Mode=TwoWay}"/>
+                <ComboBox x:Name="CBGender" SelectedItem="{Binding UserModel.Gender, Mode=TwoWay}"/>
 
                 <Label Content="Haircolor:"/>
-                <ComboBox Name="CBHaircolor" SelectedItem="{Binding UserModel.Haircolor, Mode=TwoWay}"/>
+                <ComboBox x:Name="CBHaircolor" SelectedItem="{Binding UserModel.Haircolor, Mode=TwoWay}"/>
 
                 <Button Content="Submit" Click="Button_Click" Margin="100 20"/>
 

@@ -164,9 +164,19 @@ CONSTRAINT PK_Likes Primary Key (FK_Sender, FK_Reciever)
 )
 go
 
+print 'Create index'
+create index id_Usertable_Age ON Usertable (Birthday asc)
 
 
+print 'Create Stored Procedure'
+go
+Create Procedure GetUserData
+as
+begin
+select * from UserTable
+end
 
+go
 --*********INSERT DATA**********
 insert into GenderTable values ('Mand'), ('Kvinde')
 insert into Sexuel_PrefTable values ('No Homo'), ('Little bit Homo'), ('Homo');
@@ -176,4 +186,4 @@ insert into PostalCodeTable values (1000, 'København K', 280, 240), (8000, 'Århu
 
 --insert into UserDataTable values ('Aloyard', 'Alma', 'Andreasen', 'Tværgyden 71', 'Klarup', 'Denmark', '53-41-76-00' , 'AlmaMAndreasen@dayrep.com', 'Visa')
 insert into UserTable values ('ProfName' , 'Aloyard',  1000, 'Kvinde', 'AlmaMAndreasen@dayrep.com', 'Danish','1972-11-22', 169, 84, 'pack://application:,,,/Resources/Image.jpg', GETDATE(), Null, 'No Homo', 'Blond')
-insert into UserTable values ('Mr 123' , '123',  1000, 'Mand', 'hvp@hvp.dk', 'Danish','1972-11-22', 169, 84, 'pack://application:,,,/Resources/Image.jpg', GETDATE(), Null, 'No Homo', 'Rød')
+insert into UserTable values ('Mr 123' , '123',  1000, 'Mand', 'hvp@hvp.dk', 'Danish','1972-11-22', 169, 84, 'pack://application:,,,/Resources/Image.jpg', GETDATE(), Null, 'No Homo', 'Brun')

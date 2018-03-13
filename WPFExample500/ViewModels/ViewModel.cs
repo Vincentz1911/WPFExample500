@@ -12,14 +12,15 @@ using WPFExample500.Models;
 
 namespace WPFExample500.ViewModels
 {
-    public class ViewModel
+    public class ViewModel //: PropChanged
     {
         public UserModel UserModel { get; set; }
+        DataTable dt = SQLDatabase.GetSQLData("UserTable, LoginTable", "select FK_Username, Password, PK_Profilename, Email, FK_Gender, FK_Haircolor, Job from UserTable, LoginTable");
+
         //public DataTable dt { get; set; }
 
         public ViewModel()
         {
-            DataTable dt = SQLDatabase.GetSQLData("UserTable, LoginTable", "select FK_Username, Password, PK_Profilename, Email, FK_Gender, FK_Haircolor, Job from UserTable, LoginTable");
             UserModel = new UserModel
             {
                 FK_Username = dt.Rows[0]["FK_Username"].ToString(),
@@ -32,19 +33,21 @@ namespace WPFExample500.ViewModels
             };
         }
 
-        public void Update(string str)
+        //public void Update(string str)
+        //{
+        //    UserModel.Picture = str;
+        //}
+
+
+        public void UpdateSQL(string Username, string Password, string Profilname)
         {
-            UserModel.Picture = str;
-        }
+            MessageBox.Show(Username);
 
+            
 
-        public void UpdateSQL()
-        {
-            MessageBox.Show(UserModel.FK_Username);
-
-            string query = $"insert into LoginTable values({UserModel.FK_Username}, {UserModel.Password})";
+            string query = $"insert into LoginTable values('{Username}', '{Password}')";
             SQLDatabase.SetSQL(query);
-            query = $"insert into UserTable values({UserModel.FK_Username} , {UserModel.Profilename},  1000, 'Mand', {UserModel.Email}, 'Danish','1972-11-22', 169, 84, 'pack://application:,,,/Resources/Image.jpg', GETDATE(), Null, 'No Homo', 'blond')";
+            query = $"insert into UserTable values('{Profilname}', '{Username}',  1000, 'Mand', '{UserModel.Email}', 'Danish','1972-11-22', 169, 84, 'pack://application:,,,/Resources/Image.jpg', GETDATE(), Null, 'No Homo', 'blond')";
             SQLDatabase.SetSQL(query);
 
         }
