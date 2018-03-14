@@ -1,4 +1,6 @@
-﻿namespace WPFExample500.Models
+﻿using System;
+
+namespace WPFExample500.Models
 {
     public class UserModel : PropChanged
 
@@ -52,8 +54,6 @@
         {
             get
             {
-                //if (string.IsNullOrEmpty(_Username))
-                //    return "Unknown";
                 return _email;
             }
             set
@@ -68,8 +68,6 @@
         {
             get
             {
-                //if (string.IsNullOrEmpty(_Username))
-                //    return "Unknown";
                 return _picture;
             }
             set
@@ -79,15 +77,27 @@
             }
         }
 
-        private string _gender;
+        private string _postalcode;
+        public string PostalCode { get { return _postalcode; } set { _postalcode = value; NotifyPropertyChanged("PostalCode"); } }
 
+        private string _gender;
         public string Gender { get { return _gender; } set { _gender = value; NotifyPropertyChanged("Gender"); } }
 
-        private string _haircolor;
+        private string _sexuality;
+        public string Sexuality { get { return _sexuality; } set { _sexuality = value; NotifyPropertyChanged("Sexuality"); } }
 
+        private string _haircolor;
         public string Haircolor { get { return _haircolor; } set { _haircolor = value; NotifyPropertyChanged("Haircolor"); } }
 
+        private int _heightCm;
+        public int HeightCm { get { return _heightCm; } set { _heightCm = value; NotifyPropertyChanged("HeightCm"); } }
 
+
+        private DateTime _birthdate;
+        public DateTime Birthday { get { return _birthdate.Date; } set { _birthdate = value.Date; NotifyPropertyChanged("Birthday"); } }
+
+        private int _weightKg;
+        public int WeightKg { get { return _weightKg; } set { _weightKg = value; NotifyPropertyChanged("WeightKg"); } }
 
     }
 

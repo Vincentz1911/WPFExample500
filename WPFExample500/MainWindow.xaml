@@ -6,23 +6,74 @@
         xmlns:local="clr-namespace:WPFExample500"
         xmlns:ViewModels="clr-namespace:WPFExample500.ViewModels" xmlns:Models="clr-namespace:WPFExample500.Models" x:Class="WPFExample500.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="800" Width="500">
+        Title="MainWindow" Height="800" Width="1000">
 
-    <Grid x:Name="GridUser">
+
+        <Grid Margin="20">
+            <Rectangle >
+                <Rectangle.Fill>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1" >
+                        <GradientStop Color="Violet" Offset="0" />
+                        <GradientStop Color="DarkViolet" Offset="1.0" />
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+            <Grid Height="100" VerticalAlignment="Top">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button Style="{StaticResource RoundCorner}" Content="Front Page" Click="BtnClickP0">
+                        <Button.BitmapEffect>
+                            <DropShadowBitmapEffect Color="Black" Direction="320" Softness="1" ShadowDepth="10" Opacity="0.5" />
+                        </Button.BitmapEffect>
+                    </Button>
+                    <Button Style="{StaticResource RoundCorner}" Content="Search" Click="BtnClickP1">
+                        <Button.BitmapEffect>
+                            <DropShadowBitmapEffect Color="Black" Direction="320" Softness="1" ShadowDepth="10" Opacity="0.5" />
+                        </Button.BitmapEffect>
+                    </Button>
+                    <Button Style="{StaticResource RoundCorner}" Content="Messages" Click="BtnClickP2" >
+                        <Button.BitmapEffect>
+                            <DropShadowBitmapEffect Color="Black" Direction="320" Softness="1" ShadowDepth="10" Opacity="0.5" />
+                        </Button.BitmapEffect>
+                    </Button>
+                    <Button Style="{StaticResource RoundCorner}" Content="Profile" Click="BtnClickP3">
+                        <Button.BitmapEffect>
+                            <DropShadowBitmapEffect Color="Black" Direction="320" Softness="1" ShadowDepth="10" Opacity="0.5" />
+                        </Button.BitmapEffect>
+                    </Button>
+                    <Button Style="{StaticResource RoundCorner}" Content="Login" Click="BtnClickP4">
+                        <Button.BitmapEffect>
+                            <DropShadowBitmapEffect Color="Black" Direction="320" Softness="1" ShadowDepth="10" Opacity="0.5" />
+                        </Button.BitmapEffect>
+                    </Button>
+                    <Button Style="{StaticResource RoundCorner}" Content="Quit" Click="BtnClickP5">
+                        <Button.BitmapEffect>
+                            <DropShadowBitmapEffect Color="Black" Direction="320" Softness="1" ShadowDepth="10" Opacity="0.5" />
+                        </Button.BitmapEffect>
+                    </Button>
+
+                </StackPanel>
+
+            </Grid>
+            <Frame x:Name="Main" Margin="20 100 20 20" NavigationUIVisibility="Hidden"/>
+
+        </Grid>
+</Window>
+<!--<Grid x:Name="GridUser">
         <Border Margin="50">
 
             <StackPanel >
-                <!--<StackPanel.DataContext>
+                -->
+<!--<StackPanel.DataContext>
 
                     <ViewModels:ViewModel/>
                 </StackPanel.DataContext>-->
 
 
-                <!--<ListView Margin="10" Name="LW1" ItemsSource="{Binding UserModel.Picture}" Height="430"></ListView>-->
+<!--<ListView Margin="10" Name="LW1" ItemsSource="{Binding UserModel.Picture}" Height="430"></ListView>-->
 
 
 
-                <!--<ListView Name ="LW1" Height="300" IsSynchronizedWithCurrentItem="False" ItemsSource="{Binding UserModel.Picture}" >
+<!--<ListView Name ="LW1" Height="300" IsSynchronizedWithCurrentItem="False" ItemsSource="{Binding UserModel.Picture}" >
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <UniformGrid Columns="5" HorizontalAlignment="Stretch"/>
@@ -37,6 +88,7 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>-->
+<!--
 
                 <Button Content="Get Data" Click="Button_Click_2"></Button>
                 <WrapPanel>
@@ -60,6 +112,10 @@
                 <Label Content="Email:"/>
                 <TextBox x:Name="txtEmail" Text="{Binding Email, Mode=TwoWay}" />
 
+                <Label Content="Closest City:"/>
+                <ComboBox x:Name="CBPostalCode" SelectedItem="{Binding PostalCode, Mode=TwoWay}"/>
+
+
                 <Label Content="Gender:"/>
                 <ComboBox x:Name="CBGender" SelectedItem="{Binding Gender, Mode=TwoWay}"/>
 
@@ -76,9 +132,11 @@
                 <Image Source="{Binding Picture}" Stretch="UniformToFill" />
 
 
-                <!--<Image Source="{Binding UserModel.Picture}" Stretch="UniformToFill" />-->
+                -->
+<!--<Image Source="{Binding UserModel.Picture}" Stretch="UniformToFill" />-->
+<!--
 
             </StackPanel>
         </Border>
-    </Grid>
-</Window>
+    </Grid>-->
+

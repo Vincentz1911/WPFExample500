@@ -67,8 +67,8 @@ print 'Creating table PostalCodeTable'
 if not exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'PostalCodeTable')
 Create table PostalCodeTable
 (
-PK_PostalCode int not null Primary Key,
-City nvarchar(50) not null,
+--PK_PostalCode int not null Primary Key,
+PK_City nvarchar(50) Primary Key not null,
 PosX int,
 PosY int
 )
@@ -92,11 +92,11 @@ PK_Username nvarchar(50) Primary Key,
 --CreditCard nvarchar(50)
 --)
 
-print 'Creating table Sexuel_PrefTable'
-if not exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'Sexuel_PrefTable')
-Create table Sexuel_PrefTable
+print 'Creating table Sexual_PrefTable'
+if not exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'Sexual_PrefTable')
+Create table Sexual_PrefTable
 (
-PK_Sexuel_Pref nvarchar(50) Primary Key
+PK_Sexual_Pref nvarchar(50) Primary Key
 )
 
 print 'Creating table HairColorTable'
@@ -119,7 +119,7 @@ Create table UserTable
 (
 PK_Profilename nvarchar(50) not null Primary Key,
 FK_Username nvarchar(50) foreign key references LoginTable(PK_Username),
-FK_Postal_Code int not null foreign key references PostalCodeTable(PK_PostalCode),
+FK_City nvarchar(50) not null foreign key references PostalCodeTable(PK_City),
 FK_Gender nvarchar(50) not null foreign key references GenderTable(PK_Gender),
 Email nvarchar(50) not null,
 
@@ -132,7 +132,7 @@ Job nvarchar(50),
 
 StartDate DateTime not null,
 EndDate DateTime default null,
-FK_Sexuel_Pref nvarchar(50) not null foreign key references Sexuel_PrefTable(PK_Sexuel_Pref),
+FK_Sexual_Pref nvarchar(50) not null foreign key references Sexual_PrefTable(PK_Sexual_Pref),
 FK_HairColor nvarchar(50) not null foreign key references HairColorTable(PK_HairColor),
 )
 go
@@ -179,11 +179,11 @@ end
 go
 --*********INSERT DATA**********
 insert into GenderTable values ('Mand'), ('Kvinde')
-insert into Sexuel_PrefTable values ('No Homo'), ('Little bit Homo'), ('Homo');
+insert into Sexual_PrefTable values ('No Homo'), ('Little bit Homo'), ('Homo');
 insert into HairColorTable values ('Blond'), ('Sort'), ('Brun'), ('Rød'), ('Skaldet');
 insert into LoginTable values ('Aloyard', 'Passw0rd'), ('123', '123');
-insert into PostalCodeTable values (1000, 'København K', 280, 240), (8000, 'Århus', 140, 190), (5000, 'Odense', 160, 270)
+insert into PostalCodeTable values ('København', 282, 232), ('Århus', 141, 182), ('Odense', 153, 266) , ('Aalborg', 123,84), ('Næstved',236,285), ('Esbjerg', 34,257), ('Aabenraa',92,305), ('Vejle',100,232),('Holstebro',43,161)
 
 --insert into UserDataTable values ('Aloyard', 'Alma', 'Andreasen', 'Tværgyden 71', 'Klarup', 'Denmark', '53-41-76-00' , 'AlmaMAndreasen@dayrep.com', 'Visa')
-insert into UserTable values ('ProfName' , 'Aloyard',  1000, 'Kvinde', 'AlmaMAndreasen@dayrep.com', 'Danish','1972-11-22', 169, 84, 'pack://application:,,,/Resources/Image.jpg', GETDATE(), Null, 'No Homo', 'Blond')
-insert into UserTable values ('Mr 123' , '123',  1000, 'Mand', 'hvp@hvp.dk', 'Danish','1972-11-22', 169, 84, 'pack://application:,,,/Resources/Image.jpg', GETDATE(), Null, 'No Homo', 'Brun')
+insert into UserTable values ('ProfName' , 'Aloyard',  'København', 'Kvinde', 'AlmaMAndreasen@dayrep.com', 'Danish','1972-11-22', 169, 70, 'pack://application:,,,/Resources/Image.jpg', GETDATE(), Null, 'No Homo', 'Blond')
+insert into UserTable values ('Mr 123' , '123',  'Odense', 'Mand', 'hvp@hvp.dk', 'Danish','1972-11-22', 169, 84, 'pack://application:,,,/Resources/Image.jpg', GETDATE(), Null, 'No Homo', 'Brun')

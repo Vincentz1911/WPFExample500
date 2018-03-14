@@ -14,16 +14,41 @@ namespace WPFExample500.ViewModels
 {
     public class ViewModel //: PropChanged
     {
-        public UserModel UserModel { get; set; }
-        //        DataTable dt = SQLDatabase.GetSQLData($"UserTable, LoginTable", "select FK_Username, Password, PK_Profilename, Email, FK_Gender, FK_Haircolor, Job from UserTable, LoginTable where PK_Username={Username}");
+        public List<object> GenderList = SQLDatabase.GetSQLList("select PK_Gender from GenderTable");
+        public List<object> HaircolorList = SQLDatabase.GetSQLList("select PK_Haircolor from HaircolorTable");
+        public List<object> CityList = SQLDatabase.GetSQLList("select PK_City from PostalCodeTable");
+        public List<object> SexualityList = SQLDatabase.GetSQLList("select PK_Sexual_Pref from Sexual_PrefTable");
 
-        //public DataTable dt { get; set; }
+
+        
+        public UserModel UserModel { get; set; }
 
         public ViewModel()
         {
-            //UserModel = new UserModel();
+            UserData();
+            //string table = $"UserTable, LoginTable";
+            //string query = $"select FK_Username, Password, PK_Profilename, Email, FK_Gender, FK_Haircolor, Job from UserTable, LoginTable";
+            //DataTable dt = SQLDatabase.GetSQLData(table, query);
+
+            //UserModel = new UserModel
+            //{
+            //    FK_Username = dt.Rows[0]["FK_Username"].ToString(),
+            //    Password = dt.Rows[0]["Password"].ToString(),
+            //    Profilename = dt.Rows[0]["PK_Profilename"].ToString(),
+            //    Email = dt.Rows[0]["Email"].ToString(),
+            //    Gender = dt.Rows[0]["FK_Gender"].ToString(),
+            //    Haircolor = dt.Rows[0]["FK_Haircolor"].ToString(),
+            //    Picture = dt.Rows[0]["Job"].ToString()
+            //};
+        }
+
+
+        void UserData()
+        {
             string table = $"UserTable, LoginTable";
-            string query = $"select FK_Username, Password, PK_Profilename, Email, FK_Gender, FK_Haircolor, Job from UserTable, LoginTable";
+//            string query = $"select FK_Username, Password, PK_Profilename, Email, FK_Gender, FK_Haircolor, Job from UserTable, LoginTable";
+            string query = $"select * from UserTable, LoginTable";
+
             DataTable dt = SQLDatabase.GetSQLData(table, query);
 
             UserModel = new UserModel
@@ -31,12 +56,21 @@ namespace WPFExample500.ViewModels
                 FK_Username = dt.Rows[0]["FK_Username"].ToString(),
                 Password = dt.Rows[0]["Password"].ToString(),
                 Profilename = dt.Rows[0]["PK_Profilename"].ToString(),
+                PostalCode = dt.Rows[0]["FK_City"].ToString(),
                 Email = dt.Rows[0]["Email"].ToString(),
                 Gender = dt.Rows[0]["FK_Gender"].ToString(),
+                Sexuality = dt.Rows[0]["FK_Sexual_Pref"].ToString(),
                 Haircolor = dt.Rows[0]["FK_Haircolor"].ToString(),
+                WeightKg = (int)dt.Rows[0]["WeightKg"],
+                HeightCm = (int)dt.Rows[0]["HeightCm"],
+                Birthday = (DateTime)dt.Rows[0]["Birthday"],
                 Picture = dt.Rows[0]["Job"].ToString()
+
             };
+
+
         }
+
 
         //public void Update(string str)
         //{
@@ -64,30 +98,31 @@ namespace WPFExample500.ViewModels
 
         //}
 
+
         public void InsertSQL()
         {
             //MessageBox.Show(Viemmodel.FK_Username);
             string query;
-            query = $"IF EXISTS (SELECT '{UserModel.FK_Username}' FROM dbo.LoginTable) UPDATE dbo.LoginTable SET Password = '{Password}' WHERE PK_Username = '{Username}'";
+            query = $"IF EXISTS (SELECT '{UserModel.FK_Username}' FROM dbo.LoginTable) UPDATE dbo.LoginTable SET Password = '{UserModel.Password}' WHERE PK_Username = '{UserModel.FK_Username}'";
             SQLDatabase.SetSQL(query);
-            query = $"IF EXISTS (SELECT '{Username}' FROM dbo.LoginTable) UPDATE dbo.UserTable " +
-                $"SET PK_Profilename = '{Profilename}' , Email = '{Email}' , FK_Gender = '{CBGender}' " +
-
-                $"WHERE FK_Username = '{Username}'";
+            query = $"IF EXISTS (SELECT '{UserModel.FK_Username}' FROM dbo.LoginTable) UPDATE dbo.UserTable " +
+                $"SET PK_Profilename = '{UserModel.Profilename}' , Email = '{UserModel.Email}' , FK_Gender = '{UserModel.Gender}', FK_Sexual_Pref = '{UserModel.Sexuality}' " +
+                $"FK_City = '{UserModel.PostalCode}' " +
+                $"WHERE FK_Username = '{UserModel.FK_Username}'";
             SQLDatabase.SetSQL(query);
 
+        }
 
-
-            public void UpdateSQL(string Username, string Password, string Profilename, string Email, string CBGender)
+        public void UpdateSQL()
         {
-            MessageBox.Show(UserModel.FK_Username);
+            MessageBox.Show(UserModel.Birthday.ToString("yyyy-MM-dd")); // ToShortDateString()
             string query;
-            query = $"IF EXISTS (SELECT '{Username}' FROM dbo.LoginTable) UPDATE dbo.LoginTable SET Password = '{Password}' WHERE PK_Username = '{Username}'";
+            query = $"IF EXISTS (SELECT '{UserModel.FK_Username}' FROM dbo.LoginTable) UPDATE dbo.LoginTable SET Password = '{UserModel.Password}' WHERE PK_Username = '{UserModel.FK_Username}'";
             SQLDatabase.SetSQL(query);
-            query = $"IF EXISTS (SELECT '{Username}' FROM dbo.LoginTable) UPDATE dbo.UserTable " + 
-                $"SET PK_Profilename = '{Profilename}' , Email = '{Email}' , FK_Gender = '{CBGender}' " + 
-                
-                $"WHERE FK_Username = '{Username}'";
+            query = $"IF EXISTS (SELECT '{UserModel.FK_Username}' FROM dbo.LoginTable) UPDATE dbo.UserTable SET " +
+                $"PK_Profilename = '{UserModel.Profilename}' , Email = '{UserModel.Email}' , FK_Gender = '{UserModel.Gender}', FK_Sexual_Pref = '{UserModel.Sexuality}', FK_City = '{UserModel.PostalCode}', " +
+                $"HeightCm = {UserModel.HeightCm}, WeightKg = {UserModel.WeightKg},  Birthday = '{UserModel.Birthday.ToString("yyyy-MM-dd")}' " +
+                $"WHERE FK_Username = '{UserModel.FK_Username}'";
             SQLDatabase.SetSQL(query);
 
 

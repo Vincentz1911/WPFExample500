@@ -20,50 +20,33 @@ namespace WPFExample500
         {
             InitializeComponent();
 
-            List<object> Gender = SQLDatabase.GetSQLList("select PK_Gender from GenderTable");
-            CBGender.ItemsSource = Gender;
-            List<object> Haircolor = SQLDatabase.GetSQLList("select PK_Haircolor from HaircolorTable");
-            CBHaircolor.ItemsSource = Haircolor;
 
-            viewModel = new ViewModel();
-            GridUser.DataContext = viewModel.UserModel;
+
+            //List<object> Gender = SQLDatabase.GetSQLList("select PK_Gender from GenderTable");
+            //CBGender.ItemsSource = Gender;
+            //List<object> Haircolor = SQLDatabase.GetSQLList("select PK_Haircolor from HaircolorTable");
+            //CBHaircolor.ItemsSource = Haircolor;
+            //List<object> PostalCode = SQLDatabase.GetSQLList("select PK_City from PostalCodeTable");
+            //CBPostalCode.ItemsSource = PostalCode;
+
+            //viewModel = new ViewModel();
 
             //viewModel.UserModel.FK_Username;
 
         }
 
-        //private void Button_Click(object sender, RoutedEventArgs e)
-        //{
-        //    viewModel.UpdateSQL(txtUsername.Text, txtPassword.Text, txtProfilename.Text, txtEmail.Text, CBGender.SelectedItem.ToString());
-        //}
+
+        private void BtnClickP0(object sender, RoutedEventArgs e) { Main.Content = null; }
+        private void BtnClickP1(object sender, RoutedEventArgs e) { Main.Content = new Views.SearchPage(); }
+        private void BtnClickP2(object sender, RoutedEventArgs e) { Main.Content = new Views.MessagesPage(); }
+        private void BtnClickP3(object sender, RoutedEventArgs e) { Main.Content = new Views.ProfilePage(); }
+        private void BtnClickP4(object sender, RoutedEventArgs e) { Main.Content = new Views.LoginPage(); }
+        private void BtnClickP5(object sender, RoutedEventArgs e) { Application.Current.Shutdown(); }
 
 
 
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            OpenFileDialog op = new OpenFileDialog();
-            op.Title = "Select a picture";
-            op.Filter = "All supported graphics|*.jpg;*.jpeg;*.png|" +
-              "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
-              "Portable Network Graphic (*.png)|*.png";
-            if (op.ShowDialog() == true)
-            {
-                //string f = UserModel.FK_Username;
-                string Imagepath = $@"C:\Images\1234.jpg";
-                //string filename = { Binding = "" };
-                File.Copy(op.FileName, Imagepath);
 
 
-                //imgPhoto.Source = new BitmapImage(new Uri(op.FileName));
-
-            }
-        }
-
-        private void Button_Click_2(object sender, RoutedEventArgs e)
-        {
-            //ViewModel VM = new ViewModel();
-            //viewModel.GetSQLUserData(txtUsername.Text);
-        }
     }
 }
