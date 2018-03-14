@@ -37,32 +37,34 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>-->
+
+                <Button Content="Get Data" Click="Button_Click_2"></Button>
                 <WrapPanel>
                     <Label Content="Username: "/>
-                    <Label Content="{Binding UserModel.FK_Username}" />
+                    <Label Content="{Binding FK_Username}" />
                 </WrapPanel>
-                <TextBox x:Name="txtUsername" Text="{Binding UserModel.FK_Username, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                <TextBox x:Name="txtUsername" Text="{Binding FK_Username, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
                 <WrapPanel>
                     <Label Content="Password:"/>
-                    <Label Content="{Binding UserModel.Password}" />
+                    <Label Content="{Binding Password}" />
                 </WrapPanel>
-                <TextBox x:Name="txtPassword" Text="{Binding UserModel.Password, Mode=TwoWay}" />
+                <TextBox x:Name="txtPassword" Text="{Binding Password, Mode=TwoWay}" />
 
-                <Label Content="Profilename:"/>
-                <TextBox x:Name="txtProfilename" Text="{Binding UserModel.Profilename, Mode=TwoWay}" />
+                <Label Content="Profilename:" />
+                <TextBox x:Name="txtProfilename" Text="{Binding Profilename, Mode=TwoWay}" />
 
                 
                 
                 
                 <Label Content="Email:"/>
-                <TextBox Text="{Binding UserModel.Email, Mode=TwoWay}" />
+                <TextBox x:Name="txtEmail" Text="{Binding Email, Mode=TwoWay}" />
 
                 <Label Content="Gender:"/>
-                <ComboBox x:Name="CBGender" SelectedItem="{Binding UserModel.Gender, Mode=TwoWay}"/>
+                <ComboBox x:Name="CBGender" SelectedItem="{Binding Gender, Mode=TwoWay}"/>
 
                 <Label Content="Haircolor:"/>
-                <ComboBox x:Name="CBHaircolor" SelectedItem="{Binding UserModel.Haircolor, Mode=TwoWay}"/>
+                <ComboBox x:Name="CBHaircolor" SelectedItem="{Binding Haircolor, Mode=TwoWay}"/>
 
                 <Button Content="Submit" Click="Button_Click" Margin="100 20"/>
 
@@ -71,7 +73,7 @@
 
                 <Button Content="Upload Picture" Click="Button_Click_1" Margin="100 20"/>
 
-                <Image Source="{Binding UserModel.Picture}" Stretch="UniformToFill" />
+                <Image Source="{Binding Picture}" Stretch="UniformToFill" />
 
 
                 <!--<Image Source="{Binding UserModel.Picture}" Stretch="UniformToFill" />-->

@@ -26,20 +26,16 @@ namespace WPFExample500
             CBHaircolor.ItemsSource = Haircolor;
 
             viewModel = new ViewModel();
-            GridUser.DataContext = viewModel;
+            GridUser.DataContext = viewModel.UserModel;
 
             //viewModel.UserModel.FK_Username;
 
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            //UserModel.Username = Username.Text;
-
-            //MessageBox.Show(UserModel.Username);
-            //MessageBox.Show(UserModel.FK_Username);
-            viewModel.UpdateSQL(txtUsername.Text, txtPassword.Text, txtProfilename.Text);
-        }
+        //private void Button_Click(object sender, RoutedEventArgs e)
+        //{
+        //    viewModel.UpdateSQL(txtUsername.Text, txtPassword.Text, txtProfilename.Text, txtEmail.Text, CBGender.SelectedItem.ToString());
+        //}
 
 
 
@@ -57,12 +53,17 @@ namespace WPFExample500
                 string Imagepath = $@"C:\Images\1234.jpg";
                 //string filename = { Binding = "" };
                 File.Copy(op.FileName, Imagepath);
-                
+
 
                 //imgPhoto.Source = new BitmapImage(new Uri(op.FileName));
 
             }
         }
 
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            //ViewModel VM = new ViewModel();
+            //viewModel.GetSQLUserData(txtUsername.Text);
+        }
     }
 }
