@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 
 namespace WPFExample500.Models
 {
@@ -98,37 +99,12 @@ namespace WPFExample500.Models
         private int _weightKg;
         public int WeightKg { get { return _weightKg; } set { _weightKg = value; NotifyPropertyChanged("WeightKg"); } }
 
+        private DataTable _userDataTable;
+        public DataTable UserDataTable
+        {
+            get { return _userDataTable; }
+            set { _userDataTable = value; NotifyPropertyChanged("UserDataTable"); }
+        }
+
     }
-
-
-
-    //public class Gender : PropChange
-    //    {
-
-    //    private List<> _gender;
-    //    public string Gender { get { return _gender; } set { _gender = value; OnPropertyChanged("Gender"); } }
-
-
-    //}
-
-
-
-
-
-
-    //public class PropChange
-    //{
-    //    public event PropertyChangedEventHandler PropertyChanged;
-
-    //    protected void OnPropertyChanged(string name)
-    //    {
-    //        if (PropertyChanged != null)
-    //        {
-    //            PropertyChanged(this, new PropertyChangedEventArgs(name));
-    //        }
-    //    }
-
-    //}
-
-
 }

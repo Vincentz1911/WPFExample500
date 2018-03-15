@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WPFExample500.ViewModels;
 
 namespace WPFExample500.Views
 {
@@ -20,9 +21,18 @@ namespace WPFExample500.Views
     /// </summary>
     public partial class SearchPage : Page
     {
+        ViewModel vm = new ViewModel();
+
         public SearchPage()
         {
             InitializeComponent();
+            GridSearch.DataContext = vm.UserModel.UserDataTable;
+
+        }
+
+        private void Button_Click_Search(object sender, RoutedEventArgs e)
+        {
+            vm.FindUsers();
         }
     }
 }

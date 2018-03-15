@@ -1,28 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using WPFExample500.ViewModels;
 
 namespace WPFExample500.Views
 {
-    /// <summary>
-    /// Interaction logic for LoginPage.xaml
-    /// </summary>
     public partial class LoginPage : Page
     {
+        ViewModel vm = new ViewModel();
         public LoginPage()
         {
             InitializeComponent();
+            //GridPassword.DataContext = vm.UserModel;
+        }
+
+        private void Button_Click_Login(object sender, RoutedEventArgs e)
+        {
+            vm.Login(Logintxt.Text, Passtxt.Password);
         }
     }
 }

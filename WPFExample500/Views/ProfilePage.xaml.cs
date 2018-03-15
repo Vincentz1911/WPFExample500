@@ -23,7 +23,7 @@ namespace WPFExample500.Views
     /// </summary>
     public partial class ProfilePage : Page
     {
-        public ViewModel vm = new ViewModel();
+        ViewModel vm = new ViewModel();
 
         public ProfilePage()
         {
@@ -40,7 +40,6 @@ namespace WPFExample500.Views
         {
             vm.UpdateSQL();
         }
-
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
