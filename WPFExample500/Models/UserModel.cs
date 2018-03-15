@@ -92,7 +92,6 @@ namespace WPFExample500.Models
         private int _heightCm;
         public int HeightCm { get { return _heightCm; } set { _heightCm = value; NotifyPropertyChanged("HeightCm"); } }
 
-
         private DateTime _birthdate;
         public DateTime Birthday { get { return _birthdate.Date; } set { _birthdate = value.Date; NotifyPropertyChanged("Birthday"); } }
 

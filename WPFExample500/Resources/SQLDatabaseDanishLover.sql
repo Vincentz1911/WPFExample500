@@ -130,6 +130,8 @@ HeightCm int not null,
 WeightKg int not null,
 Job nvarchar(50),
 
+ImagePath nvarchar(50),
+
 StartDate DateTime not null,
 EndDate DateTime default null,
 FK_Sexual_Pref nvarchar(50) not null foreign key references Sexual_PrefTable(PK_Sexual_Pref),
@@ -185,5 +187,5 @@ insert into LoginTable values ('Aloyard', 'Passw0rd'), ('123', '123');
 insert into PostalCodeTable values ('København', 282, 232), ('Århus', 141, 182), ('Odense', 153, 266) , ('Aalborg', 123,84), ('Næstved',236,285), ('Esbjerg', 34,257), ('Aabenraa',92,305), ('Vejle',100,232),('Holstebro',43,161)
 
 --insert into UserDataTable values ('Aloyard', 'Alma', 'Andreasen', 'Tværgyden 71', 'Klarup', 'Denmark', '53-41-76-00' , 'AlmaMAndreasen@dayrep.com', 'Visa')
-insert into UserTable values ('ProfName' , 'Aloyard',  'København', 'Kvinde', 'AlmaMAndreasen@dayrep.com', 'Danish','1972-11-22', 169, 70, 'pack://application:,,,/Resources/Image.jpg', GETDATE(), Null, 'No Homo', 'Blond')
-insert into UserTable values ('Mr 123' , '123',  'Odense', 'Mand', 'hvp@hvp.dk', 'Danish','1972-11-22', 169, 84, 'pack://application:,,,/Resources/Image.jpg', GETDATE(), Null, 'No Homo', 'Brun')
+insert into UserTable values ('ProfName' , 'Aloyard',  'København', 'Kvinde', 'AlmaMAndreasen@dayrep.com', 'Danish','1972-11-22', 169, 70, 'Job', 'pack://application:,,,/Resources/Image.jpg', GETDATE(), Null, 'No Homo', 'Blond')
+insert into UserTable values ('Mr 123' , '123',  'Odense', 'Mand', 'hvp@hvp.dk', 'Danish','1972-11-22', 169, 84, 'Job','pack://application:,,,/Resources/Image.jpg', GETDATE(), Null, 'No Homo', 'Brun')

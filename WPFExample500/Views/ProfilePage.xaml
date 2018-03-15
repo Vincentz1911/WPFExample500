@@ -106,10 +106,10 @@
 
         <StackPanel Grid.Column="2" Margin="20">
             <Label Content="Profile Picture:"/>
-            <Button Content="Upload Picture" Click="Button_Click_1" Width="100" Margin="20"/>
 
             <Image Source="{Binding Picture}" Stretch="UniformToFill" />
-            <!--<Image Source="{Binding UserModel.Picture}" Stretch="UniformToFill" />-->
+            <Label Content="{Binding Picture}" />
+            <Button Content="Upload Picture" Click="Button_Click_1" Width="100" Margin="20"/>
         </StackPanel>
 
 
